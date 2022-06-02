@@ -1,0 +1,28 @@
+data: synthetic
+data_path: './datasets/simulated' # '/home/akhoeini/scratch/data/simulated'
+shuffle_data: True
+cuda: False
+fix_seed: True
+pretrain: True
+z_dim: 80 # latent representation dim
+h_dim: 1000  # hidden layer dim
+epochs: 30
+epochs_pretrain: 20
+batch_size: 256
+learning_rate: 0.01
+learning_rate_pretrain: 0.01
+lambda_hk: 0.3 # hyper parameter for house-keeping genes regularization
+lambda_r: 0.01 # hyper paremeter for regularizing all the genes except house-keeping and marker genes. 
+lr_scheduler_step: 0.5 # learning rate schedular step
+lr_scheduler_gamma: 10
+verbose: True
+target_cluster_reg: False
+target_reg: True 
+pretrain_regularization: False
+intercluster_const: 0.2
+
+### Checkpoint
+note: train
+snapshot: './output/checkpoints'
+
+tensorboard: False
