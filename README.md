@@ -15,7 +15,7 @@ pip install -r requirements.txt
 ```
 
 ## Datasets 
-1.`Synthetic`  [[datasets/simulated](https://github.com/arashkhoeini/scGRC/tree/main/datasets/simulated)]
+1.`Synthetic`  [[datasets/simulated](https://drive.google.com/file/d/131QbARRHcYb9c7KgZXJ2jSXFRhSVRhss/view?usp=sharing)]
 2.`Tabula Muris` [[download link](https://figshare.com/projects/Tabula_Muris_Transcriptomic_characterization_of_20_organs_and_tissues_from_Mus_musculus_at_single_cell_resolution/27733)]
 
 
