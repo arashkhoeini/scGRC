@@ -5,7 +5,6 @@ import torch
 import numpy as np
 import sys
 import random
-import easy_dict
 from utils import mkdir
 from torch.utils.tensorboard import SummaryWriter
 
