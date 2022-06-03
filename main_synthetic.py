@@ -73,7 +73,7 @@ def get_de_hk_from_simulated_data(tissues ,n_de, n_hk):
     de_set = set()
     hk_set = set()
     for tissue_name, adata in tissues.items():
-        groups = adata.obs.celltype.map(lambda s:s[s.index('p'):]).unique()
+        groups = adata.obs.celltype.map(lambda s:s[s.index('p')+1:]).unique()
         cols = [f'DEFacGroup{group}' for group in groups]
         for col in cols:
             sorted_de = np.argsort(adata.var[col])
