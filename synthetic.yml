@@ -1,5 +1,6 @@
 data: synthetic
 data_path: './datasets/simulated' # '/home/akhoeini/scratch/data/simulated'
+reps: 1 # experiment repetition
 shuffle_data: True
 cuda: False
 fix_seed: True
