@@ -128,7 +128,7 @@ def explainability_test(tissues, result, top_n_genes):
             print(
                 f"\t cluster {cluster_to_explain}: {max_overlap} agreement with group {overlap_list.index(max_overlap)}")
         
-        json.dump(agreements, f'{output_dir}/tissue{i}.json')
+        json.dump(agreements, open(f'{output_dir}/tissue{i}.json', 'w'))
         agreements = np.array(agreements)
         print(f"for {tissue_to_explain}:  mean: {agreements.mean()}, std:{agreements.std()}")
 

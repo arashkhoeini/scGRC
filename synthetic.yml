@@ -8,14 +8,14 @@ pretrain: True
 z_dim: 80 # latent representation dim
 h_dim: 1000  # hidden layer dim
 epochs: 30
-epochs_pretrain: 20
-batch_size: 256
+epochs_pretrain: 15
+batch_size: 512
 learning_rate: 0.01
 learning_rate_pretrain: 0.01
-lambda_hk: 0.3 # hyper parameter for house-keeping genes regularization
-lambda_r: 0.01 # hyper paremeter for regularizing all the genes except house-keeping and marker genes. 
-lr_scheduler_step: 0.5 # learning rate schedular step
-lr_scheduler_gamma: 10
+lambda_hk: 0.1 # hyper parameter for house-keeping genes regularization
+lambda_r: 0.05 # hyper paremeter for regularizing all the genes except house-keeping and marker genes. 
+lr_scheduler_step: 0.9 # learning rate schedular step
+lr_scheduler_gamma: 1
 verbose: True
 target_cluster_reg: False
 target_reg: True 
