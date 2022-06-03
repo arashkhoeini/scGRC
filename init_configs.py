@@ -77,12 +77,12 @@ def show_config(config, sub=False):
 
 def type_align(source, target):
     if isinstance(source, bool):
-        return int(target)
+        return bool(target)
     elif isinstance(source, float):
         return float(target)
     elif isinstance(source, str):
         return target
     elif isinstance(source, int):
-        return bool(source)
+        return int(source)
     else:
         print("Unsupported type: {}".format(type(source)))
