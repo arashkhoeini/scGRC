@@ -93,8 +93,8 @@ def get_test_data(result, tissue_to_explain, label_col):
 def get_de_all_groups(adata, n_de):
     de_list = {}
 
-    groups = adata.obs.celltype.map(lambda s: s[-1]).unique()
-    cols = {group: f'group{group}_DEratio' for group in groups}
+    groups = adata.obs.celltype.map(lambda s: s[s.index('p')+1:]).unique()
+    cols = {group: f'DEFacGroup{group}' for group in groups}
     for group, col in cols.items():
         sorted_de = np.argsort(adata.var[col].values)
         de_list[group] = sorted_de[-n_de:]
