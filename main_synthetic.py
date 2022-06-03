@@ -12,6 +12,8 @@ import scanpy as sc
 from data.experiment import Experiment
 from pathlib import Path
 import pickle
+import json
+from utils import mkdir
 
 
 def init_dataset(config):
@@ -102,7 +104,7 @@ def get_de_all_groups(adata, n_de):
 
 def explainability_test(tissues, result, top_n_genes):
     label_col = 'scGRC_labels'
-    for i in range(1, 4):
+    for i in range(1, len(tissues)+1):
         tissue_to_explain = f'tissue{i}'
         adata_test, uniq_labels_pred = get_test_data(result, tissue_to_explain, label_col)
         genes = adata_test.var_names
@@ -119,6 +121,11 @@ def explainability_test(tissues, result, top_n_genes):
             agreements.append(max_overlap)
             print(
                 f"\t cluster {cluster_to_explain}: {max_overlap} agreement with group {overlap_list.index(max_overlap)}")
+        now = datetime.now()
+        dt_string = now.strftime("%Y-%m-%d-%H-%M")
+        file_dir = f'./output/result/explainability/{dt_string}'
+        mkdir(file_dir)
+        json.dump(agreements, f'{file_dir}/tissue{i}.json')
         agreements = np.array(agreements)
         print(f"for {tissue_to_explain}:  mean: {agreements.mean()}, std:{agreements.std()}")
 
