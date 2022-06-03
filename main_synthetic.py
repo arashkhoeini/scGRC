@@ -104,6 +104,12 @@ def get_de_all_groups(adata, n_de):
 
 def explainability_test(tissues, result, top_n_genes):
     label_col = 'scGRC_labels'
+    
+    now = datetime.now()
+    dt_string = now.strftime("%Y-%m-%d-%H-%M")
+    output_dir = f'./output/result/explainability/{dt_string}'
+    mkdir(output_dir)
+
     for i in range(1, len(tissues)+1):
         tissue_to_explain = f'tissue{i}'
         adata_test, uniq_labels_pred = get_test_data(result, tissue_to_explain, label_col)
@@ -121,11 +127,8 @@ def explainability_test(tissues, result, top_n_genes):
             agreements.append(max_overlap)
             print(
                 f"\t cluster {cluster_to_explain}: {max_overlap} agreement with group {overlap_list.index(max_overlap)}")
-        now = datetime.now()
-        dt_string = now.strftime("%Y-%m-%d-%H-%M")
-        file_dir = f'./output/result/explainability/{dt_string}'
-        mkdir(file_dir)
-        json.dump(agreements, f'{file_dir}/tissue{i}.json')
+        
+        json.dump(agreements, f'{output_dir}/tissue{i}.json')
         agreements = np.array(agreements)
         print(f"for {tissue_to_explain}:  mean: {agreements.mean()}, std:{agreements.std()}")
 
